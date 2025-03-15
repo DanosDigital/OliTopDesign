@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloth Company</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #2c5364;
+      color: #fff;
+    }
+
+    header .logo img {
+      height: 100px;
+      width: 500;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      color: #ff6347;
+    }
+
+    /* Hero Section */
+
+
+    /* Collections Section */
+    .collections {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .collections h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cloth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .cloth-item {
+      background-color: #2c5364;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cloth-item img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .cloth-item h3 {
+      margin: 10px 0;
+    }
+
+    .cloth-item p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* About Section */
+
+    /* Contact Section */
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact .social-media a {
+      color: #333;
+      padding: 10px;
+      background-color: #ff6347;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      gap: 40px;
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body id="home">
+  <!-- Header Section -->
+  <header>
+    <div class="logo">
+      <img src="C:\Users\YOR\Downloads\photo_2025-03-15_16-06-16-removebg-preview.png" alt="Cloth Company Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#collections">Collections</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+
+  <!-- Collections Section -->
+  <section class="collections" id="collections">
+
+    <div class="cloth-grid">
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\Downloads\photo_2025-03-15_14-49-11.jpg" alt="Cloth 1" class="lightbox-trigger"
+          onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\Downloads\photo_2025-03-15_14-49-11.jpg" alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-54-42.jpg" alt="Cloth 2 class="
+          lightbox-trigger" onclick="openLightbox(this)""
+          class=" lightbox-trigger">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-54-42.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-55-40.jpg" alt="Cloth 3"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-55-40.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-01.jpg" alt="Cloth 4"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-01.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-13.jpg" alt="Cloth 5"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-13.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-19.jpg" alt="Cloth 6"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-19.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-21.jpg" alt="Cloth 7"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-21.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-24.jpg" alt="Cloth 8"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-24.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-18.jpg" alt="Cloth 9"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-18.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-10.jpg" alt="Cloth 10"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-10.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-13.jpg" alt="Cloth 11"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-13.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-04.jpg" alt="Cloth 12"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+
+
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-04.jpg"
+          alt="Lightbox Image">
+      </div>
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-57.jpg" alt="Cloth 13"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-57.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-52.jpg" alt="Cloth 14"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-52.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-44.jpg" alt="Cloth 15"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-44.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-26.jpg" alt="Cloth 16"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-26.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-39.jpg" alt="Cloth 17"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-39.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-33.jpg" alt="Cloth 18"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-56-33.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-55.jpg" alt="Cloth 19"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-55.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-59-09.jpg" alt="Cloth 20"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-59-09.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-08.jpg" alt="Cloth 21"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-08.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-23.jpg" alt="Cloth 22"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-58-23.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-56.jpg" alt="Cloth 23"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-56.jpg"
+          alt="Lightbox Image">
+      </div>
+
+      <div class="cloth-item">
+        <img src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-59.jpg" alt="Cloth 24"
+          class="lightbox-trigger" onclick="openLightbox(this)">
+      </div>
+      <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="C:\Users\YOR\OneDrive\Documents\oli cloth photos\photo_2025-03-15_14-57-59.jpg"
+          alt="Lightbox Image">
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Phone: 0910104887/0941774141
+    </p>
+    <div class="social-media">
+      <a
+        href="https://www.instagram.com/official_oli_top_design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+          class="fab fa-instagram"></i></a>
+      <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Oli Top Design. All rights reserved.</p>
+    <p>Designed by <a href="https://www.instagram.com/jordan_tadele?igsh=MWN5OXRxZDh3cDlscA==">DanosDigital</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    function openLightbox(img) {
+      document.getElementById("lightbox-img").src = img.src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+</body>
+
+</html>
