@@ -149,6 +149,20 @@
       color: white;
       cursor: pointer;
     }
+    .section video {
+      width: 380px;
+      height: 280px;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      sound: none;
+    }
+
+    .section video:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 
@@ -170,14 +184,12 @@
   <!-- Collections Section -->
   <section class="collections" id="collections">
 
-     <video width="400" height="360" controls>
-      <source src="IMG_8634.MP4" type="video/mp4">
-      <source src="video.webm" type="video/webm">
-      Your browser does not support the video tag.
-    </video>
-
-    <div class="cloth-grid">
-
+   <div class="section">
+      <video controls>
+        <source src="C:\Users\YOR\OneDrive\Documents\oli to\IMG_8634.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>  
+    
       <div class="cloth-item">
         <img src="photo_2025-03-15_14-49-11.jpg" alt="Cloth 1" class="lightbox-trigger"
           onclick="openLightbox(this)">
@@ -964,6 +976,7 @@
                                                                                                   src="photo_17_2025-03-16_10-32-48.jpg"
                                                                                                   alt="Lightbox Image">
                                                                                               </div>
+        
       </div>
     </div>
     </div>
@@ -973,13 +986,18 @@
   <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>Phone: 0910104887/0941774141
+    <p><i class="fas fa-phone"></i> 0910104887 /0941774141
     </p>
+    <p> <i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia
+ </p>
     <div class="social-media">
       <a
         href="https://www.instagram.com/official_oli_top_design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
           class="fab fa-instagram"></i></a>
       <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.facebook.com/share/15q3PeinN2/?mibextid=wwXIfr" target="_blank">
+    <i class="fab fa-facebook"></i>
+</a>
     </div>
   </section>
 
