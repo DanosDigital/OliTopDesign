@@ -4,1028 +4,889 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OLI TOP DESIGN</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>OLITOPDESIGN - Traditional Ethiopian Clothing Showroom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* General Styles */
-    body {
-      font-family: 'Arial', sans-serif;
+    :root {
+      --primary: #8c2f39;
+      --secondary: #f2c94c;
+      --dark: #2d2817;
+      --light: #f5f5f5;
+      --accent: #33691e;
+      --gold: #d4af37;
+      --cream: #f8f4e3;
+      --dark-red: #6b1f28;
+    }
+
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
     }
 
     header {
+      background: linear-gradient(135deg, var(--primary), var(--dark-red));
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      background-color: #2c5364;
-      color: #fff;
     }
 
-    header .logo img {
-      height: 100px;
-      width: 500;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .logo-img {
+      height: 50px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
     }
 
     nav ul {
-      list-style: none;
       display: flex;
-      gap: 20px;
+      list-style: none;
+      gap: 2rem;
     }
 
-    nav ul li a {
-      color: #fff;
+    nav a {
+      color: white;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 0.5rem 0;
     }
 
-    nav ul li a:hover {
-      color: #ff6347;
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
     }
 
-    /* Hero Section */
-
-
-    /* Collections Section */
-    .collections {
-      padding: 50px 20px;
-      text-align: center;
+    nav a:hover {
+      color: var(--secondary);
     }
 
-    .collections h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .cloth-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .cloth-item {
-      background-color: #2c5364;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .cloth-item img {
+    nav a:hover:after {
       width: 100%;
-      border-radius: 10px;
     }
 
-    .cloth-item h3 {
-      margin: 10px 0;
-    }
-
-    .cloth-item p {
-      font-size: 1.2rem;
-      color: #333;
-    }
-
-    /* About Section */
-
-    /* Contact Section */
-    .contact {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .contact .social-media a {
-      color: #333;
-      padding: 10px;
-      background-color: #ff6347;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      gap: 40px;
-      margin: 0 10px;
-      font-size: 1.5rem;
-    }
-
-    /* Footer Section */
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .lightbox {
+    /* Mobile Menu styles */
+    .menu-toggle {
       display: none;
-      position: fixed;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-red);
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        animation: slideDown 0.3s ease-in-out forwards;
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    /* MINIMIZED HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1570214476695-19bd2e296f6d?ixlib=rb-4.0.3') center/cover no-repeat;
+      height: 50vh;
+      /* Reduced from 80vh to 50vh */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 1.5rem;
+      /* Reduced padding */
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      /* Reduced from 3.5rem */
+      margin-bottom: 0.8rem;
+      /* Reduced margin */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      /* Reduced from 1.2rem */
+      margin-bottom: 1.5rem;
+      /* Reduced margin */
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: var(--dark);
+      padding: 0.7rem 1.3rem;
+      /* Slightly reduced padding */
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      /* Slightly smaller font */
+      letter-spacing: 0.5px;
+    }
+
+    .btn:hover {
+      background-color: #e3b63b;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      /* Reduced padding */
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      /* Reduced margin */
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      /* Slightly smaller */
+      color: var(--primary);
+      display: inline-block;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .section-title h2:after {
+      content: '';
+      display: block;
+      width: 60px;
+      /* Slightly smaller */
+      height: 3px;
+      /* Slightly thinner */
+      background: var(--secondary);
+      margin: 8px auto;
+      /* Reduced margin */
+    }
+
+    .gallery-section {
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+        url('https://media.istockphoto.com/id/1166137873/photo/hand-made-colorful-scarf-ethiopia.jpg?s=1024x1024&w=is&k=20&c=_QDRpqAKKyTlvoZ68WNoFI28rFhfRgOTsp_Z2NwxaVo=') center/cover fixed;
+      padding: 3rem 0;
+      /* Reduced padding */
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      /* Reduced gap */
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 8px;
+      /* Slightly smaller radius */
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      /* Softer shadow */
+      transition: all 0.3s ease;
+      /* Faster transition */
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      /* Less dramatic hover effect */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      /* Softer hover shadow */
+    }
+
+    .gallery-item:hover:before {
+      opacity: 1;
+    }
+
+    /* FULL-SIZE IMAGE CONTAINER - FIXED */
+    .gallery-img-container {
+      width: 100%;
+      height: 420px;
+      /* Increased height for larger image display */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Changed to cover to fill the container */
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    /* MINIMIZED DESCRIPTION SECTION */
+    .gallery-info {
+      padding: 1rem;
+      /* Reduced padding */
+      position: relative;
+    }
+
+    .gallery-info h3 {
+      font-size: 1.2rem;
+      /* Smaller font */
+      margin-bottom: 0.5rem;
+      /* Reduced margin */
+      color: var(--primary);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.3;
+      /* Tighter line height */
+    }
+
+    .gallery-info p {
+      color: #666;
+      margin-bottom: 0.8rem;
+      /* Reduced margin */
+      line-height: 1.5;
+      /* Tighter line height */
+      font-size: 0.9rem;
+      /* Smaller font */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* Limit to 2 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .gallery-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      font-size: 0.8rem;
+      /* Smaller font */
+      border-top: 1px solid #eee;
+      padding-top: 0.8rem;
+      /* Reduced padding */
+      margin-top: 0.8rem;
+      /* Reduced margin */
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: auto;
       justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      margin: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+      animation: zoom 0.4s;
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0.8);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 1001;
+    }
+
+    .close:hover {
+      color: var(--secondary);
+    }
+
+    .about {
+      background-color: white;
+      border-radius: 12px;
+      /* Slightly smaller radius */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      /* Softer shadow */
+      padding: 2rem;
+      /* Added padding */
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      /* Reduced gap */
       align-items: center;
     }
 
-    .lightbox img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
+    .about-text {
+      flex: 1;
+      min-width: 300px;
     }
 
-    .lightbox .close {
+    .about-text p {
+      margin-bottom: 1.2rem;
+      /* Reduced margin */
+      font-size: 1rem;
+      /* Smaller font */
+      line-height: 1.6;
+      /* Tighter line height */
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .about-image:before {
+      content: '';
       position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-    }
-    .section video {
-      width: 380px;
-      height: 280px;
-      object-fit: cover;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      sound: none;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      /* Slightly smaller radius */
+      top: -12px;
+      /* Adjusted position */
+      left: -12px;
+      /* Adjusted position */
+      z-index: 0;
     }
 
-    .section video:hover {
-      transform: scale(1.1);
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+      /* Slightly smaller radius */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      /* Softer shadow */
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 2rem 1.5rem;
+      /* Reduced padding */
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      /* Reduced gap */
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      color: var(--secondary);
+      margin-bottom: 1.2rem;
+      /* Reduced margin */
+      font-size: 1.2rem;
+      /* Smaller font */
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      margin-bottom: 0.6rem;
+      /* Reduced margin */
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.9rem;
+      /* Smaller font */
+    }
+
+    .footer-section a:hover {
+      color: var(--secondary);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      /* Reduced gap */
+      justify-content: center;
+      margin-top: 1.2rem;
+      /* Reduced margin */
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      /* Slightly smaller */
+      height: 40px;
+      /* Slightly smaller */
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+      /* Slightly smaller */
+    }
+
+    .social-icons a:hover {
+      background-color: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-2px);
+      /* Less dramatic hover */
+    }
+
+    .copyright {
+      margin-top: 3rem;
+      /* Reduced margin */
+      padding-top: 1.2rem;
+      /* Reduced padding */
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: #999;
+      font-size: 0.85rem;
+      /* Smaller font */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.2rem;
+      }
+
+      .gallery-img-container {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 40vh;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-img-container {
+        height: 250px;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image:before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        padding: 0.8rem;
+      }
+
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+
+      .logo-img {
+        height: 35px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .hero {
+        height: 35vh;
+        padding: 1rem;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .gallery-img-container {
+        height: 350px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .loading {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--primary);
+      grid-column: 1 / -1;
     }
   </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;500&display=swap"
+    rel="stylesheet">
 </head>
 
-<body id="home">
-  <!-- Header Section -->
+<body>
   <header>
-    <div class="logo">
-      <img src="photo_2025-03-15_16-06-16-removebg-preview.png" alt="Cloth Company Logo">
+    <div class="header-content">
+      <div class="logo">
+        <img src="https://i.postimg.cc/T3wbf4wJ/photo-2025-03-15-08-51-38-removebg-preview.png" alt="OliTopDesign Logo"
+          class="logo-img">
+      </div>
+      <i class="fas fa-bars menu-toggle"></i>
+      <nav id="main-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#contact">CONTACT US</a></li>
-      </ul>
-    </nav>
   </header>
-  <!-- Collections Section -->
-  <section class="collections" id="collections">
-     <div class="section">
-      <video controls>
-        <source src="IMG_8634.MP4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>  
-     </div>
-<div class="cloth-grid">
 
-   
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-49-11.jpg" alt="Cloth 1" class="lightbox-trigger"
-          onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-49-11.jpg" alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-54-42.jpg" alt="Cloth 2 class="
-          lightbox-trigger" onclick="openLightbox(this)""
-          class=" lightbox-trigger">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-54-42.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-55-40.jpg" alt="Cloth 3"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-55-40.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-01.jpg" alt="Cloth 4"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-01.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-13.jpg" alt="Cloth 5"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-13.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-19.jpg" alt="Cloth 6"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-19.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-21.jpg" alt="Cloth 7"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-21.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-24.jpg" alt="Cloth 8"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-24.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-
-        <img src="photo_2025-03-15_14-57-18.jpg" alt="Cloth 9"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-18.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-
-        <img src="photo_2025-03-15_14-57-10.jpg" alt="Cloth 10"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-10.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-
-        <img src="photo_2025-03-15_14-57-13.jpg" alt="Cloth 11"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-13.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-
-        <img src="photo_2025-03-15_14-57-04.jpg" alt="Cloth 12"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-04.jpg"
-          alt="Lightbox Image">
-      </div>
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-57.jpg" alt="Cloth 13"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-57.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-52.jpg" alt="Cloth 14"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-52.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-44.jpg" alt="Cloth 15"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-44.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-26.jpg" alt="Cloth 16"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-26.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-39.jpg" alt="Cloth 17"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-39.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-56-33.jpg" alt="Cloth 18"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-56-33.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-58-55.jpg" alt="Cloth 19"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-58-55.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-59-09.jpg" alt="Cloth 20"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-59-09.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-58-08.jpg" alt="Cloth 21"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-58-08.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-58-23.jpg" alt="Cloth 22"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-58-23.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-56.jpg" alt="Cloth 23"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-56.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-59.jpg" alt="Cloth 24"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-59.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-58-36.jpg" alt="Cloth 25"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-58-36.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-58-52.jpg" alt="Cloth 26"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-58-52.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-28.jpg" alt="Cloth 27"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-28.jpg"
-          alt="Lightbox Image">
-      </div>
-
-      <div class="cloth-item">
-        <img src="photo_2025-03-15_14-57-33.jpg" alt="Cloth 28"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2025-03-15_14-57-33.jpg"
-          alt="Lightbox Image">
-      </div>
-        <div class="cloth-item">
-        <img src="photo_2_2025-03-16_10-30-35.jpg" alt="Cloth 29"
-          class="lightbox-trigger" onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_2_2025-03-16_10-30-35.jpg"
-          alt="Lightbox Image">
-      </div>
-  <div class="cloth-item">
-    <img src="photo_71_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger" onclick="openLightbox(this)">
-  </div>
-  <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="photo_71_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-  </div>
-    <div class="cloth-item">
-      <img src="photo_54_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger" onclick="openLightbox(this)">
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Authentic Ethiopian Traditional Clothing</h2>
+      <p>Discover the beauty and craftsmanship of Ethiopia's rich textile heritage through our exclusive collection.</p>
+      <a href="#gallery" class="btn">Explore Collection</a>
     </div>
-    <div id="lightbox" class="lightbox">
-      <span class="close" onclick="closeLightbox()">&times;</span>
-      <img id="lightbox-img" src="photo_54_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
+  </section>
+
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Collection</h2>
+      </div>
+      <div class="gallery" id="gallery-container">
+        <div class="loading">Loading collection...</div>
+      </div>
     </div>
-      <div class="cloth-item">
-        <img src="photo_38_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-          onclick="openLightbox(this)">
-      </div>
-      <div id="lightbox" class="lightbox">
-        <span class="close" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="photo_38_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-      </div>
-        <div class="cloth-item">
-          <img src="photo_21_2025-03-16_10-30-35.jpg" alt="Cloth 28" class="lightbox-trigger"
-            onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_21_2025-03-16_10-30-35.jpg" alt="Lightbox Image">
-        </div>
-          <div class="cloth-item">
-            <img src="photo_24_2025-03-16_10-30-35.jpg" alt="Cloth 28" class="lightbox-trigger"
-              onclick="openLightbox(this)">
-          </div>
-          <div id="lightbox" class="lightbox">
-            <span class="close" onclick="closeLightbox()">&times;</span>
-            <img id="lightbox-img" src="photo_24_2025-03-16_10-30-35.jpg" alt="Lightbox Image">
-          </div>
-            <div class="cloth-item">
-              <img src="photo_26_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                onclick="openLightbox(this)">
-            </div>
-            <div id="lightbox" class="lightbox">
-              <span class="close" onclick="closeLightbox()">&times;</span>
-              <img id="lightbox-img" src="photo_26_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-            </div>
-              <div class="cloth-item">
-                <img src="photo_23_2025-03-16_10-30-35.jpg" alt="Cloth 28" class="lightbox-trigger"
-                  onclick="openLightbox(this)">
-              </div>
-              <div id="lightbox" class="lightbox">
-                <span class="close" onclick="closeLightbox()">&times;</span>
-                <img id="lightbox-img" src="photo_23_2025-03-16_10-30-35.jpg" alt="Lightbox Image">
-              </div>
-                <div class="cloth-item">
-                  <img src="photo_2_2025-03-16_10-32-48.jpg" alt="Cloth 37" class="lightbox-trigger"
-                    onclick="openLightbox(this)">
-                </div>
-                <div id="lightbox" class="lightbox">
-                  <span class="close" onclick="closeLightbox()">&times;</span>
-                  <img id="lightbox-img" src="photo_2_2025-03-16_10-32-48.jpg" alt="Lightbox Image">
-                </div>
-                  <div class="cloth-item">
-                    <img src="photo_32_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                      onclick="openLightbox(this)">
-                  </div>
-                  <div id="lightbox" class="lightbox">
-                    <span class="close" onclick="closeLightbox()">&times;</span>
-                    <img id="lightbox-img" src="photo_32_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                  </div>
-                    <div class="cloth-item">
-                      <img src="photo_31_2025-03-16_10-30-35.jpg" alt="Cloth 39" class="lightbox-trigger"
-                        onclick="openLightbox(this)">
-                    </div>
-                    <div id="lightbox" class="lightbox">
-                      <span class="close" onclick="closeLightbox()">&times;</span>
-                      <img id="lightbox-img" src="photo_31_2025-03-16_10-30-35.jpg" alt="Lightbox Image">
-                    </div>
-                      <div class="cloth-item">
-                        <img src="photo_32_2025-03-16_10-32-48.jpg" alt="Cloth 28" class="lightbox-trigger"
-                          onclick="openLightbox(this)">
-                      </div>
-                      <div id="lightbox" class="lightbox">
-                        <span class="close" onclick="closeLightbox()">&times;</span>
-                        <img id="lightbox-img" src="photo_32_2025-03-16_10-32-48.jpg" alt="Lightbox Image">
-                      </div>
-                        <div class="cloth-item">
-                          <img src="photo_84_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                            onclick="openLightbox(this)">
-                        </div>
-                        <div id="lightbox" class="lightbox">
-                          <span class="close" onclick="closeLightbox()">&times;</span>
-                          <img id="lightbox-img" src="photo_84_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                        </div>
-                          <div class="cloth-item">
-                            <img src="photo_82_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                              onclick="openLightbox(this)">
-                          </div>
-                          <div id="lightbox" class="lightbox">
-                            <span class="close" onclick="closeLightbox()">&times;</span>
-                            <img id="lightbox-img" src="photo_82_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                          </div>
-                            <div class="cloth-item">
-                              <img src="photo_81_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                                onclick="openLightbox(this)">
-                            </div>
-                            <div id="lightbox" class="lightbox">
-                              <span class="close" onclick="closeLightbox()">&times;</span>
-                              <img id="lightbox-img" src="photo_81_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                            </div>
-                              <div class="cloth-item">
-                                <img src="photo_80_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                                  onclick="openLightbox(this)">
-                              </div>
-                              <div id="lightbox" class="lightbox">
-                                <span class="close" onclick="closeLightbox()">&times;</span>
-                                <img id="lightbox-img" src="photo_80_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                              </div>
-                                <div class="cloth-item">
-                                  <img src="photo_78_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                                    onclick="openLightbox(this)">
-                                </div>
-                                <div id="lightbox" class="lightbox">
-                                  <span class="close" onclick="closeLightbox()">&times;</span>
-                                  <img id="lightbox-img" src="photo_78_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                                </div>
-                                  <div class="cloth-item">
-                                    <img src="photo_77_2025-03-16_09-17-49.jpg" alt="Cloth 28" class="lightbox-trigger"
-                                      onclick="openLightbox(this)">
-                                  </div>
-                                  <div id="lightbox" class="lightbox">
-                                    <span class="close" onclick="closeLightbox()">&times;</span>
-                                    <img id="lightbox-img" src="photo_77_2025-03-16_09-17-49.jpg" alt="Lightbox Image">
-                                  </div>
-                                    <div class="cloth-item">
-                                      <img src="photo_76_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                        class="lightbox-trigger" onclick="openLightbox(this)">
-                                    </div>
-                                    <div id="lightbox" class="lightbox">
-                                      <span class="close" onclick="closeLightbox()">&times;</span>
-                                      <img id="lightbox-img" src="photo_76_2025-03-16_09-17-49.jpg"
-                                        alt="Lightbox Image">
-                                    </div>
-                                      <div class="cloth-item">
-                                        <img src="photo_75_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                          class="lightbox-trigger" onclick="openLightbox(this)">
-                                      </div>
-                                      <div id="lightbox" class="lightbox">
-                                        <span class="close" onclick="closeLightbox()">&times;</span>
-                                        <img id="lightbox-img" src="photo_75_2025-03-16_09-17-49.jpg"
-                                          alt="Lightbox Image">
-                                      </div>
-                                        <div class="cloth-item">
-                                          <img src="photo_73_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                            class="lightbox-trigger" onclick="openLightbox(this)">
-                                        </div>
-                                        <div id="lightbox" class="lightbox">
-                                          <span class="close" onclick="closeLightbox()">&times;</span>
-                                          <img id="lightbox-img" src="photo_73_2025-03-16_09-17-49.jpg"
-                                            alt="Lightbox Image">
-                                        </div>
-                                          <div class="cloth-item">
-                                            <img src="photo_53_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                              class="lightbox-trigger" onclick="openLightbox(this)">
-                                          </div>
-                                          <div id="lightbox" class="lightbox">
-                                            <span class="close" onclick="closeLightbox()">&times;</span>
-                                            <img id="lightbox-img" src="photo_53_2025-03-16_09-17-49.jpg"
-                                              alt="Lightbox Image">
-                                          </div>
-                                            <div class="cloth-item">
-                                              <img src="photo_55_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                class="lightbox-trigger" onclick="openLightbox(this)">
-                                            </div>
-                                            <div id="lightbox" class="lightbox">
-                                              <span class="close" onclick="closeLightbox()">&times;</span>
-                                              <img id="lightbox-img" src="photo_55_2025-03-16_09-17-49.jpg"
-                                                alt="Lightbox Image">
-                                            </div>
-                                              <div class="cloth-item">
-                                                <img src="photo_56_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                  class="lightbox-trigger" onclick="openLightbox(this)">
-                                              </div>
-                                              <div id="lightbox" class="lightbox">
-                                                <span class="close" onclick="closeLightbox()">&times;</span>
-                                                <img id="lightbox-img" src="photo_56_2025-03-16_09-17-49.jpg"
-                                                  alt="Lightbox Image">
-                                              </div>
-                                                <div class="cloth-item">
-                                                  <img src="photo_58_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                    class="lightbox-trigger" onclick="openLightbox(this)">
-                                                </div>
-                                                <div id="lightbox" class="lightbox">
-                                                  <span class="close" onclick="closeLightbox()">&times;</span>
-                                                  <img id="lightbox-img" src="photo_58_2025-03-16_09-17-49.jpg"
-                                                    alt="Lightbox Image">
-                                                </div>
-                                                  <div class="cloth-item">
-                                                    <img src="photo_60_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                      class="lightbox-trigger" onclick="openLightbox(this)">
-                                                  </div>
-                                                  <div id="lightbox" class="lightbox">
-                                                    <span class="close" onclick="closeLightbox()">&times;</span>
-                                                    <img id="lightbox-img" src="photo_60_2025-03-16_09-17-49.jpg"
-                                                      alt="Lightbox Image">
-                                                  </div>
-                                                    <div class="cloth-item">
-                                                      <img src="photo_61_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                        class="lightbox-trigger" onclick="openLightbox(this)">
-                                                    </div>
-                                                    <div id="lightbox" class="lightbox">
-                                                      <span class="close" onclick="closeLightbox()">&times;</span>
-                                                      <img id="lightbox-img" src="photo_61_2025-03-16_09-17-49.jpg"
-                                                        alt="Lightbox Image">
-                                                    </div>
-                                                      <div class="cloth-item">
-                                                        <img src="photo_63_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                          class="lightbox-trigger" onclick="openLightbox(this)">
-                                                      </div>
-                                                      <div id="lightbox" class="lightbox">
-                                                        <span class="close" onclick="closeLightbox()">&times;</span>
-                                                        <img id="lightbox-img" src="photo_63_2025-03-16_09-17-49.jpg"
-                                                          alt="Lightbox Image">
-                                                      </div>
-                                                        <div class="cloth-item">
-                                                          <img src="photo_64_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                            class="lightbox-trigger" onclick="openLightbox(this)">
-                                                        </div>
-                                                        <div id="lightbox" class="lightbox">
-                                                          <span class="close" onclick="closeLightbox()">&times;</span>
-                                                          <img id="lightbox-img" src="photo_64_2025-03-16_09-17-49.jpg"
-                                                            alt="Lightbox Image">
-                                                        </div>
-                                                          <div class="cloth-item">
-                                                            <img src="photo_65_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                              class="lightbox-trigger" onclick="openLightbox(this)">
-                                                          </div>
-                                                          <div id="lightbox" class="lightbox">
-                                                            <span class="close" onclick="closeLightbox()">&times;</span>
-                                                            <img id="lightbox-img"
-                                                              src="photo_65_2025-03-16_09-17-49.jpg"
-                                                              alt="Lightbox Image">
-                                                          </div>
-                                                            <div class="cloth-item">
-                                                              <img src="photo_66_2025-03-16_09-17-49.jpg" alt="Cloth 28"
-                                                                class="lightbox-trigger" onclick="openLightbox(this)">
-                                                            </div>
-                                                            <div id="lightbox" class="lightbox">
-                                                              <span class="close"
-                                                                onclick="closeLightbox()">&times;</span>
-                                                              <img id="lightbox-img"
-                                                                src="photo_66_2025-03-16_09-17-49.jpg"
-                                                                alt="Lightbox Image">
-                                                            </div>
-                                                              <div class="cloth-item">
-                                                                <img src="photo_68_2025-03-16_09-17-49.jpg"
-                                                                  alt="Cloth 28" class="lightbox-trigger"
-                                                                  onclick="openLightbox(this)">
-                                                              </div>
-                                                              <div id="lightbox" class="lightbox">
-                                                                <span class="close"
-                                                                  onclick="closeLightbox()">&times;</span>
-                                                                <img id="lightbox-img"
-                                                                  src="photo_68_2025-03-16_09-17-49.jpg"
-                                                                  alt="Lightbox Image">
-                                                              </div>
-                                                                <div class="cloth-item">
-                                                                  <img src="photo_69_2025-03-16_09-17-49.jpg"
-                                                                    alt="Cloth 28" class="lightbox-trigger"
-                                                                    onclick="openLightbox(this)">
-                                                                </div>
-                                                                <div id="lightbox" class="lightbox">
-                                                                  <span class="close"
-                                                                    onclick="closeLightbox()">&times;</span>
-                                                                  <img id="lightbox-img"
-                                                                    src="photo_69_2025-03-16_09-17-49.jpg"
-                                                                    alt="Lightbox Image">
-                                                                </div>
-                                                                  <div class="cloth-item">
-                                                                    <img src="photo_70_2025-03-16_09-17-49.jpg"
-                                                                      alt="Cloth 28" class="lightbox-trigger"
-                                                                      onclick="openLightbox(this)">
-                                                                  </div>
-                                                                  <div id="lightbox" class="lightbox">
-                                                                    <span class="close"
-                                                                      onclick="closeLightbox()">&times;</span>
-                                                                    <img id="lightbox-img"
-                                                                      src="photo_70_2025-03-16_09-17-49.jpg"
-                                                                      alt="Lightbox Image">
-                                                                  </div>
-                                                                    <div class="cloth-item">
-                                                                      <img src="photo_72_2025-03-16_09-17-49.jpg"
-                                                                        alt="Cloth 28" class="lightbox-trigger"
-                                                                        onclick="openLightbox(this)">
-                                                                    </div>
-                                                                    <div id="lightbox" class="lightbox">
-                                                                      <span class="close"
-                                                                        onclick="closeLightbox()">&times;</span>
-                                                                      <img id="lightbox-img"
-                                                                        src="photo_72_2025-03-16_09-17-49.jpg"
-                                                                        alt="Lightbox Image">
-                                                                    </div>
-                                                                      <div class="cloth-item">
-                                                                        <img src="photo_96_2025-03-16_09-17-49.jpg"
-                                                                          alt="Cloth 28" class="lightbox-trigger"
-                                                                          onclick="openLightbox(this)">
-                                                                      </div>
-                                                                      <div id="lightbox" class="lightbox">
-                                                                        <span class="close"
-                                                                          onclick="closeLightbox()">&times;</span>
-                                                                        <img id="lightbox-img"
-                                                                          src="photo_96_2025-03-16_09-17-49.jpg"
-                                                                          alt="Lightbox Image">
-                                                                      </div>
-                                                                        <div class="cloth-item">
-                                                                          <img src="photo_93_2025-03-16_09-17-49.jpg"
-                                                                            alt="Cloth 28" class="lightbox-trigger"
-                                                                            onclick="openLightbox(this)">
-                                                                        </div>
-                                                                        <div id="lightbox" class="lightbox">
-                                                                          <span class="close"
-                                                                            onclick="closeLightbox()">&times;</span>
-                                                                          <img id="lightbox-img"
-                                                                            src="photo_93_2025-03-16_09-17-49.jpg"
-                                                                            alt="Lightbox Image">
-                                                                        </div>
-                                                                          <div class="cloth-item">
-                                                                            <img src="photo_92_2025-03-16_09-17-49.jpg"
-                                                                              alt="Cloth 28" class="lightbox-trigger"
-                                                                              onclick="openLightbox(this)">
-                                                                          </div>
-                                                                          <div id="lightbox" class="lightbox">
-                                                                            <span class="close"
-                                                                              onclick="closeLightbox()">&times;</span>
-                                                                            <img id="lightbox-img"
-                                                                              src="photo_92_2025-03-16_09-17-49.jpg"
-                                                                              alt="Lightbox Image">
-                                                                          </div>
-                                                                            <div class="cloth-item">
-                                                                              <img
-                                                                                src="photo_30_2025-03-16_10-30-35.jpg"
-                                                                                alt="Cloth 28" class="lightbox-trigger"
-                                                                                onclick="openLightbox(this)">
-                                                                            </div>
-                                                                            <div id="lightbox" class="lightbox">
-                                                                              <span class="close"
-                                                                                onclick="closeLightbox()">&times;</span>
-                                                                              <img id="lightbox-img"
-                                                                                src="photo_30_2025-03-16_10-30-35.jpg"
-                                                                                alt="Lightbox Image">
-                                                                            </div>
-                                                                              <div class="cloth-item">
-                                                                                <img
-                                                                                  src="photo_21_2025-03-16_10-32-48.jpg"
-                                                                                  alt="Cloth 28"
-                                                                                  class="lightbox-trigger"
-                                                                                  onclick="openLightbox(this)">
-                                                                              </div>
-                                                                              <div id="lightbox" class="lightbox">
-                                                                                <span class="close"
-                                                                                  onclick="closeLightbox()">&times;</span>
-                                                                                <img id="lightbox-img"
-                                                                                  src="photo_21_2025-03-16_10-32-48.jpg"
-                                                                                  alt="Lightbox Image">
-                                                                              </div>
-                                                                                <div class="cloth-item">
-                                                                                  <img
-                                                                                    src="photo_27_2025-03-16_10-30-35.jpg"
-                                                                                    alt="Cloth 28"
-                                                                                    class="lightbox-trigger"
-                                                                                    onclick="openLightbox(this)">
-                                                                                </div>
-                                                                                <div id="lightbox" class="lightbox">
-                                                                                  <span class="close"
-                                                                                    onclick="closeLightbox()">&times;</span>
-                                                                                  <img id="lightbox-img"
-                                                                                    src="photo_27_2025-03-16_10-30-35.jpg"
-                                                                                    alt="Lightbox Image">
-                                                                                </div>
-                                                                                  <div class="cloth-item">
-                                                                                    <img
-                                                                                      src="photo_19_2025-03-16_10-32-48.jpg"
-                                                                                      alt="Cloth 28"
-                                                                                      class="lightbox-trigger"
-                                                                                      onclick="openLightbox(this)">
-                                                                                  </div>
-                                                                                  <div id="lightbox" class="lightbox">
-                                                                                    <span class="close"
-                                                                                      onclick="closeLightbox()">&times;</span>
-                                                                                    <img id="lightbox-img"
-                                                                                      src="photo_19_2025-03-16_10-32-48.jpg"
-                                                                                      alt="Lightbox Image">
-                                                                                  </div>
-                                                                                    <div class="cloth-item">
-                                                                                      <img
-                                                                                        src="photo_18_2025-03-16_10-30-35.jpg"
-                                                                                        alt="Cloth 28"
-                                                                                        class="lightbox-trigger"
-                                                                                        onclick="openLightbox(this)">
-                                                                                    </div>
-                                                                                    <div id="lightbox" class="lightbox">
-                                                                                      <span class="close"
-                                                                                        onclick="closeLightbox()">&times;</span>
-                                                                                      <img id="lightbox-img"
-                                                                                        src="photo_18_2025-03-16_10-30-35.jpg"
-                                                                                        alt="Lightbox Image">
-                                                                                    </div>
-                                                                                      <div class="cloth-item">
-                                                                                        <img
-                                                                                          src="photo_28_2025-03-16_10-30-35.jpg"
-                                                                                          alt="Cloth 28"
-                                                                                          class="lightbox-trigger"
-                                                                                          onclick="openLightbox(this)">
-                                                                                      </div>
-                                                                                      <div id="lightbox"
-                                                                                        class="lightbox">
-                                                                                        <span class="close"
-                                                                                          onclick="closeLightbox()">&times;</span>
-                                                                                        <img id="lightbox-img"
-                                                                                          src="photo_28_2025-03-16_10-30-35.jpg"
-                                                                                          alt="Lightbox Image">
-                                                                                      </div>
-                                                                                        <div class="cloth-item">
-                                                                                          <img
-                                                                                            src="photo_41_2025-03-16_10-32-48.jpg"
-                                                                                            alt="Cloth 28"
-                                                                                            class="lightbox-trigger"
-                                                                                            onclick="openLightbox(this)">
-                                                                                        </div>
-                                                                                        <div id="lightbox"
-                                                                                          class="lightbox">
-                                                                                          <span class="close"
-                                                                                            onclick="closeLightbox()">&times;</span>
-                                                                                          <img id="lightbox-img"
-                                                                                            src="photo_41_2025-03-16_10-32-48.jpg"
-                                                                                            alt="Lightbox Image">
-                                                                                        </div>
-                                                                                          <div class="cloth-item">
-                                                                                            <img
-                                                                                              src="photo_27_2025-03-16_10-32-48.jpg"
-                                                                                              alt="Cloth 28"
-                                                                                              class="lightbox-trigger"
-                                                                                              onclick="openLightbox(this)">
-                                                                                          </div>
-                                                                                          <div id="lightbox"
-                                                                                            class="lightbox">
-                                                                                            <span class="close"
-                                                                                              onclick="closeLightbox()">&times;</span>
-                                                                                            <img id="lightbox-img"
-                                                                                              src="photo_27_2025-03-16_10-32-48.jpg"
-                                                                                              alt="Lightbox Image">
-                                                                                          </div>
-                                                                                            <div class="cloth-item">
-                                                                                              <img
-                                                                                                src="photo_27_2025-03-16_10-30-35.jpg"
-                                                                                                alt="Cloth 28"
-                                                                                                class="lightbox-trigger"
-                                                                                                onclick="openLightbox(this)">
-                                                                                            </div>
-                                                                                            <div id="lightbox"
-                                                                                              class="lightbox">
-                                                                                              <span class="close"
-                                                                                                onclick="closeLightbox()">&times;</span>
-                                                                                              <img id="lightbox-img"
-                                                                                                src="photo_27_2025-03-16_10-30-35.jpg"
-                                                                                                alt="Lightbox Image">
-                                                                                            </div>
-                                                                                              <div class="cloth-item">
-                                                                                                <img
-                                                                                                  src="photo_17_2025-03-16_10-32-48.jpg"
-                                                                                                  alt="Cloth 28"
-                                                                                                  class="lightbox-trigger"
-                                                                                                  onclick="openLightbox(this)">
-                                                                                              </div>
-                                                                                              <div id="lightbox"
-                                                                                                class="lightbox">
-                                                                                                <span class="close"
-                                                                                                  onclick="closeLightbox()">&times;</span>
-                                                                                                <img id="lightbox-img"
-                                                                                                  src="photo_17_2025-03-16_10-32-48.jpg"
-                                                                                                  alt="Lightbox Image">
-                                                                                              </div>
-     
+  </section>
+
+  <section class="container about" id="about">
+    <div class="section-title">
+      <h2>About Us</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p>OLITOPDESIGN is dedicated to preserving and promoting the beautiful tradition of Ethiopian clothing. Our
+          showroom features exquisite pieces crafted by skilled artisans from various regions of Ethiopia.</p>
+        <p>Each garment tells a story and represents the rich cultural heritage of our country. From the intricate
+          embroidery to the vibrant colors, every detail reflects the artistry and craftsmanship that has been passed
+          down through generations.</p>
         
       </div>
-    </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p><i class="fas fa-phone"></i> 0910104887 /0941774141
-    </p>
-    <p> <i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia BOLE BACK OF MORNING STAR Mall
- </p>
-    <div class="social-media">
-      <a
-        href="https://www.instagram.com/official_oli_top_design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-          class="fab fa-instagram"></i></a>
-      <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
-      <a href="https://www.facebook.com/share/15q3PeinN2/?mibextid=wwXIfr" target="_blank">
-    <i class="fab fa-facebook"></i>
-</a>
+      <div class="about-image">
+        <img
+          src="https://media.istockphoto.com/id/1278833912/photo/young-african-woman-weaving-a-colorful-scarf-ethiopia-east-africa.jpg?s=1024x1024&w=is&k=20&c=H24iggq1Z8x7jpAJcKmNu8GKDwBfIbMp0BMBA2gx3_0="
+          alt="Ethiopian Traditional Weaving">
+      </div>
     </div>
   </section>
 
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Oli Top Design. All rights reserved.</p>
-    <p>Designed by <a href="https://www.instagram.com/jordan_tadele?igsh=MWN5OXRxZDh3cDlscA==">DanosDigital</a></p>
+  <div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-image">
+  </div>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+251941774141">+251941774141</a></p> <!-- Added tel: link -->
+        <p><a href="tel:+251910104887">+251910104887</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@ethiocloth.com">info@olitopdesign.com</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Visit Us</h3>
+        <p>Monday - Friday: 9am - 6pm</p>
+        <p>Saturday: 10am - 4pm</p>
+        <p>Sunday: Closed</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/p/18PzLTbgas/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/p/DGjELagowX5/?igsh=NGkwNXhpMWV0bmdz"><i class="fab fa-instagram"></i></a>
+          <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
+          <a href=""><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 OliTopDesign. All rights reserved.</p>
+      <P>Prepared by <a href="https://www.instagram.com/jordan_tadele?igsh=MWN5OXRxZDh3cDlscA==">DanosDigital</a></P>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+    // Initialize Supabase
+    const supabaseUrl = 'https://lkvfxpwngckmyfrmygkj.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrdmZ4cHduZ2NrbXlmcm15Z2tqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzMTIzMTYsImV4cCI6MjA3MTg4ODMxNn0.tbqJGNeDgnhv9Bgthzyi5yGhRc2_b_m_ulCDSnxngrU';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+
+    // DOM Elements
+    const galleryContainer = document.getElementById('gallery-container');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const closeBtn = document.getElementsByClassName('close')[0];
+
+    // Mobile navigation toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('#main-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
       });
     });
-    function openLightbox(img) {
-      document.getElementById("lightbox-img").src = img.src;
-      document.getElementById("lightbox").style.display = "flex";
+
+    // Load gallery items from Supabase
+    async function loadGallery() {
+      try {
+        const { data, error } = await supabase
+          .from('gallery')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Error loading gallery:', error);
+          galleryContainer.innerHTML = '<p class="loading">Error loading gallery. Please try again later.</p>';
+          return;
+        }
+
+        if (data.length === 0) {
+          galleryContainer.innerHTML = '<p class="loading">No items in the gallery yet.</p>';
+          return;
+        }
+
+        galleryContainer.innerHTML = '';
+
+        data.forEach(item => {
+          const galleryItem = document.createElement('div');
+          galleryItem.className = 'gallery-item';
+          galleryItem.innerHTML = `
+            <div class="gallery-img-container">
+              <img src="${item.image_url}" alt="${item.title}" class="gallery-img">
+            </div>
+            <div class="gallery-info">
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+            </div>
+          `;
+
+          galleryItem.addEventListener('click', () => {
+            modal.classList.add('active');
+            modalImg.src = item.image_url;
+            document.body.style.overflow = 'hidden';
+          });
+
+          galleryContainer.appendChild(galleryItem);
+        });
+      } catch (err) {
+        console.error('Error:', err);
+        galleryContainer.innerHTML = '<p class="loading">Error loading gallery. Please try again later.</p>';
+      }
     }
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
+    // Close modal when clicking on X
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Load gallery on page load
+    document.addEventListener('DOMContentLoaded', loadGallery);
   </script>
 </body>
 
