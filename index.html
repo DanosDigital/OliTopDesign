@@ -1,548 +1,1270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OLI TOP DESIGN</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8c2f39" />
+  <meta name="description" content="OliTopDesign - Traditional Ethiopian Clothing Showroom" />
+  <title>OliTopDesign Showroom</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
   <style>
-    /* General Styles */
-    body {
-      font-family: 'Arial', sans-serif;
+    :root {
+      --primary: #8c2f39;
+      --secondary: #f2c94c;
+      --dark: #2d2817;
+      --light: #f5f5f5;
+      --accent: #33691e;
+      --bg: #f0f2f5;
+      --card: #ffffff;
+      --text: #2d2817;
+      --muted: #6c757d;
+      --shadow: 0 4px 10px rgba(0, 0, 0, .08);
+      --sidebar-width: 280px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c0e12;
+      --card: #12151b;
+      --text: #e6e6e6;
+      --muted: #a3a9b3;
+      --shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    }
+
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    header {
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s ease;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 0.75rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px;
-      background-color: #2c5364;
-      color: #fff;
     }
 
-    header .logo img {
-      height: 100px;
-      width: 500;
-    }
-
-    nav ul {
-      list-style: none;
+    .logo {
       display: flex;
-      gap: 20px;
-    }
-
-    nav ul li a {
-      color: #fff;
+      align-items: center;
+      gap: 1rem;
+      /* increased spacing for clarity */
+      font-weight: 800;
+      /* bolder text */
+      color: var(--primary);
       text-decoration: none;
-      font-weight: bold;
+      font-size: 1.25rem;
+      /* slightly larger text */
+      line-height: 1.2;
+      white-space: nowrap;
+      /* prevents text wrap */
     }
 
-    nav ul li a:hover {
-      color: #ff6347;
-    }
-
-    /* Hero Section */
-
-
-    /* Collections Section */
-    .collections {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .collections h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .cloth-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .cloth-item {
-      background-color: #2c5364;
-      padding: 20px;
+    .logo img {
+      background: rgb(230, 227, 227);
+      height: 65px;
+      /* slightly larger for detail */
+      width: auto;
+      object-fit: contain;
+      /* keeps proportions */
+      image-rendering: -webkit-optimize-contrast;
+      /* improves sharpness */
+      image-rendering: crisp-edges;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      /* optional: soft edges for polish */
+      transition: transform 0.2s ease-in-out;
     }
 
-    .cloth-item img {
-      width: 100%;
-      border-radius: 10px;
+    .logo img:hover {
+      transform: scale(1.05);
+      /* subtle zoom on hover */
     }
 
-    .cloth-item h3 {
-      margin: 10px 0;
-    }
-
-    .cloth-item p {
-      font-size: 1.2rem;
-      color: #333;
-    }
-
-    /* About Section */
-
-    /* Contact Section */
-    .contact {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .contact .social-media a {
-      color: #333;
-      padding: 10px;
-      background-color: #ff6347;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      gap: 40px;
-      margin: 0 10px;
-      font-size: 1.5rem;
-    }
-
-    /* Footer Section */
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .lightbox {
+    .nav-toggle {
       display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text);
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    /* Sidebar Menu - FIXED POSITIONING */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      /* Start off-screen */
+      width: var(--sidebar-width);
+      height: 100%;
+      background: var(--card);
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      padding: 80px 20px 20px;
+    }
+
+    .sidebar.active {
+      left: 0;
+      /* Slide in to proper left position */
+    }
+
+    .sidebar-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sidebar-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .sidebar-nav a:hover {
+      background: rgba(140, 47, 57, 0.1);
+      color: var(--primary);
+    }
+
+    .sidebar-theme-toggle {
+      margin-top: 2rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://media.istockphoto.com/id/1166137873/photo/hand-made-colorful-scarf-ethiopia.jpg?s=1024x1024&w=is&k=20&c=_QDRpqAKKyTlvoZ68WNoFI28rFhfRgOTsp_Z2NwxaVo=') center/cover fixed;
 
-    .lightbox img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-
-    .lightbox .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
       color: white;
-      cursor: pointer;
     }
 
-    .section video {
-      width: 380px;
-      height: 280px;
-      object-fit: cover;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #6b1f28;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 1rem 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      font-size: 2.2rem;
+    }
+
+    /* Grid layout for larger screens */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .gallery-container {
+      width: 100%;
+      height: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      background: var(--card);
       transition: transform 0.3s ease;
-      sound: none;
+      cursor: pointer;
+
     }
 
-    .section video:hover {
-      transform: scale(1.1);
+    /* Instagram-style horizontal scroll for multiple images */
+    .gallery-post {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-post:hover {
+      transform: translateY(-5px);
+    }
+
+    .post-header {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .post-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .post-date {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Horizontal scroll container */
+    .post-images {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      cursor: pointer;
+    }
+
+    .post-images::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+
+    .post-image {
+      flex: 0 0 auto;
+      width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+      transition: transform 0.3s ease;
+      padding: 1rem;
+      box-sizing: border-box;
+      max-width: 600px;
+      scroll-behavior: smooth;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      /* Let image height adjust naturally */
+      max-height: 500px;
+      /* Limit height for large screens */
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .image-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* Mobile-specific adjustment */
+    @media (max-width: 576px) {
+      .post-image img {
+        max-height: 500px;
+        /* Shorter height on phones */
+      }
+    }
+
+    .post-image:hover .image-nav {
+      opacity: 1;
+    }
+
+    .image-nav.prev {
+      left: 15px;
+    }
+
+    .image-nav.next {
+      right: 15px;
+    }
+
+    .image-counter {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      z-index: 5;
+    }
+
+    /* Hover / animation effect */
+    .image-counter:hover {
+      transform: scale(1.05);
+    }
+
+    .post-content {
+      padding: 1rem;
+    }
+
+    .post-description {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    /* Single image post */
+    .single-image-post .post-image {
+      width: 100%;
+      cursor: pointer;
+
+    }
+
+    /* Loading state */
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: auto;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      display: block;
+      max-width: 90%;
+      max-height: 70%;
+      margin: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 30px rgba(206, 176, 7, 0.2);
+      animation: zoom 0.4s;
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0.8);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 1001;
+    }
+
+    .modal-close:hover {
+      color: var(--secondary);
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      color: white;
+      font-size: 1.5rem;
+      transition: background 0.3s;
+    }
+
+    .modal-nav:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .modal-nav.prev {
+      left: 30px;
+    }
+
+    .modal-nav.next {
+      right: 30px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .footer h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    .copyright {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 769px) {
+      .gallery-container {
+        max-width: none;
+      }
+
+      .gallery-grid .gallery-post {
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .gallery-section {
+        padding: 2rem 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+      }
+
+      .post-image img {
+        max-height: 385px;
+        /* Reduced from 500px */
+        aspect-ratio: 3/4;
+        /* Better aspect ratio for clothing images */
+      }
+
+      .modal-content {
+        max-width: 95%;
+        max-height: 85%;
+      }
+
+      .modal-close {
+        top: 15px;
+        right: 20px;
+        font-size: 30px;
+      }
+
+      .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .modal-nav.prev {
+        left: 15px;
+      }
+
+      .modal-nav.next {
+        right: 15px;
+      }
+
+      .logo img {
+        height: 45px;
+        /* smaller for mobile */
+      }
+
+      .logo {
+        font-size: 1rem;
+        /* adjust text for mobile */
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .post-header {
+        flex-wrap: wrap;
+      }
+
+      .post-date {
+        margin-left: 0;
+        width: 100%;
+        order: 3;
+      }
+
+      .post-image img {
+        max-height: 385px;
+      }
+
+      .sidebar {
+        width: 85%;
+        left: -85%;
+        /* Start off-screen for mobile */
+      }
+
+      .sidebar.active {
+        left: 0;
+        /* Slide in to proper left position for mobile */
+      }
+
+      .gallery-post {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .header {
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-left .nav-toggle {
+      order: -1;
+      /* Move toggle before logo */
     }
   </style>
 </head>
 
-<body id="home">
-  <!-- Header Section -->
-  <header>
-    <div class="logo">
-      <img src="photo_2025-03-15_16-06-16-removebg-preview.png" alt="Cloth Company Logo">
+<body>
+  <!-- Sidebar Menu -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-theme-toggle">
+        <span>Dark Mode</span>
+        <button class="theme-toggle" id="sidebarThemeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+
+
+    </nav>
+  </aside>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <a href="#" class="logo">
+        <img src="https://i.postimg.cc/T3wbf4wJ/photo-2025-03-15-08-51-38-removebg-preview.png"
+          alt="OliTopDesign Logo" />
+
+      </a>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#contact">CONTACT US</a></li>
-      </ul>
+
+    <nav class="nav" id="nav">
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
+
   <!-- Hero Section -->
+  <section class="hero">
+    <h1>Oli TopDesign</h1>
+    <p>Experience the beauty and elegance of authentic Habesha Kemis and traditional attire</p>
+    <a href="#gallery" class="btn">View Collection</a>
+  </section>
 
-  <!-- Collections Section -->
-  <section class="collections" id="collections">
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <h2 class="section-title">Our Collection</h2>
 
-    <div class="section">
-      <video controls>
-        <source src="IMG_8634.MP4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="cloth-grid">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Loading beautiful traditional attire...</p>
+      </div>
+      <!-- Gallery items will be inserted here by JavaScript -->
+    </div>
+  </section>
 
-
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-49-11.jpg" alt="Cloth 1" class="lightbox-trigger"
-            onclick="openLightbox(this)">
-
-
+  <!-- About Section -->
+  <section id="about" style="padding: 4rem 2rem; background: var(--card);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 class="section-title">About OliTopDesign</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div>
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Our Heritage</h3>
+          <p>OliTopDesign የኢትዮጵያን የበለፀጉ ባህላዊ ቅርሶች በባህላዊ አልባሳት ያከብራል። እያንዳንዱ ክፍል በትውልዶች ውስጥ የተላለፈውን የእጅ ጥበብ ፣ ወግ እና ውበት
+            ይተርካል።</p>
         </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-49-11.jpg" alt="Lightbox Image">
+        <div>
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Our Mission</h3>
+          <p>ከወቅታዊ የፋሽን አዝማሚያዎች ጋር እየተላመድን የኢትዮጵያን የባህል አልባሳት ለመጠበቅ እና ለማስተዋወቅ አላማችን ነው። ስብስቦቻችን የኢትዮጵያን የባህል አልባሳት ውበት
+            እና ሁለገብነት ያሳያሉ።</p>
         </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-54-42.jpg" alt="Cloth 2 class="
-            lightbox-trigger" onclick="openLightbox(this)""
-          class=" lightbox-trigger">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-54-42.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-55-40.jpg" alt="Cloth 3"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-55-40.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-01.jpg" alt="Cloth 4"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-01.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-13.jpg" alt="Cloth 5"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-13.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-19.jpg" alt="Cloth 6"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-19.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-21.jpg" alt="Cloth 7"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-21.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-24.jpg" alt="Cloth 8"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="oli cloth photos\photo_2025-03-15_14-57-24.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-
-          <img src="photo_2025-03-15_14-57-18.jpg" alt="Cloth 9"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="oli cloth photos\photo_2025-03-15_14-57-18.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-
-          <img src="photo_2025-03-15_14-57-10.jpg" alt="Cloth 10"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-10.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-
-          <img src="photo_2025-03-15_14-57-13.jpg" alt="Cloth 11"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-13.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-
-          <img src="photo_2025-03-15_14-57-04.jpg" alt="Cloth 12"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-
-
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-04.jpg"
-            alt="Lightbox Image">
-        </div>
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-57.jpg" alt="Cloth 13"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="oli cloth photos\photo_2025-03-15_14-56-57.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-52.jpg" alt="Cloth 14"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-52.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-44.jpg" alt="Cloth 15"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-44.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-26.jpg" alt="Cloth 16"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-26.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-39.jpg" alt="Cloth 17"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-39.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-56-33.jpg" alt="Cloth 18"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-56-33.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-58-55.jpg" alt="Cloth 19"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-58-55.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-59-09.jpg" alt="Cloth 20"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-59-09.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-58-08.jpg" alt="Cloth 21"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-58-08.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-58-23.jpg" alt="Cloth 22"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-58-23.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-56.jpg" alt="Cloth 23"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-56.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-59.jpg" alt="Cloth 24"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-59.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-58-36.jpg" alt="Cloth 25"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-58-36.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-58-52.jpg" alt="Cloth 26"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-58-52.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-28.jpg" alt="Cloth 27"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-28.jpg"
-            alt="Lightbox Image">
-        </div>
-
-        <div class="cloth-item">
-          <img src="photo_2025-03-15_14-57-33.jpg" alt="Cloth 28"
-            class="lightbox-trigger" onclick="openLightbox(this)">
-        </div>
-        <div id="lightbox" class="lightbox">
-          <span class="close" onclick="closeLightbox()">&times;</span>
-          <img id="lightbox-img" src="photo_2025-03-15_14-57-33.jpg"
-            alt="Lightbox Image">
-
-          <div class="cloth-item">
-            <img src="photo_2025-03-15_14-57-33.jpg" alt="Cloth 1"
-              class="lightbox-trigger">
-          </div>
-          <div id="lightbox" class="lightbox">
-            <span class="close" onclick="closeLightbox()">&times;</span>
-            <img id="lightbox-img" src="" alt="Lightbox Image">
-          </div>
+        <div>
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">Our Craft</h3>
+          <p>እያንዳንዱ ልብስ ከዘመናዊ ዲዛይን ጋር የተጣመረ ባህላዊ ቴክኒኮችን በመጠቀም በጥንቃቄ ይሠራል
+            ስሜታዊነት ፣ሁለቱንም ትክክለኛነት እና ወቅታዊ ይግባኝ ማረጋገጥ ነው።</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>Phone: 0910104887/0941774141
-    </p>
-    <div class="social-media">
-      <a
-        href="https://www.instagram.com/official_oli_top_design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
-          class="fab fa-instagram"></i></a>
-      <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
+  <!-- Image Modal -->
+  <div id="image-modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-nav prev" id="modalPrev">
+      <i class="fas fa-chevron-left"></i>
     </div>
-  </section>
+    <div class="modal-nav next" id="modalNext">
+      <i class="fas fa-chevron-right"></i>
+    </div>
+    <img class="modal-content" id="modal-image">
+  </div>
 
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Oli Top Design. All rights reserved.</p>
-    <p>Designed by <a href="https://www.instagram.com/jordan_tadele?igsh=MWN5OXRxZDh3cDlscA==">DanosDigital</a></p>
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <div>
+        <div class="footer-logo">
+          <img src="https://i.postimg.cc/T3wbf4wJ/photo-2025-03-15-08-51-38-removebg-preview.png"
+            alt="OliTopDesign Logo" />
+          <span>OliTopDesign</span>
+        </div>
+        <p>Preserving and showcasing the beauty of traditional Ethiopian clothing.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/p/18PzLTbgas/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/p/DGjELagowX5/?igsh=NGkwNXhpMWV0bmdz"><i class="fab fa-instagram"></i></a>
+          <a href="https://t.me/olitopdesign1"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact Info</h3>
+        <ul class="footer-links">
+          <li><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</li>
+          <li><i class="fas fa-phone"></i> <a href="tel:+251910104887">+251910104887</a> & <a
+              href="tel:+251941774141">+251941774141</a></li>
+          <li><i class="fas fa-envelope"></i> info@olitopdesign.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2025 OliTopDesign. All rights reserved.</p>
+      <p>Designed by <a href="https://www.instagram.com/jordan_tadele?igsh=MWN5OXRxZDh3cDlscA=="
+          style="color: var(--secondary);">DanosDigital</a></p>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // Smooth scrolling for anchor links
+    // Initialize Supabase
+    const supabaseUrl = 'https://lkvfxpwngckmyfrmygkj.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrdmZ4cHduZ2NrbXlmcm15Z2tqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzMTIzMTYsImV4cCI6MjA3MTg4ODMxNn0.tbqJGNeDgnhv9Bgthzyi5yGhRc2_b_m_ulCDSnxngrU';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+
+    // DOM Elements
+    const galleryContainer = document.getElementById('galleryGrid');
+    const loadingElement = document.getElementById('loading');
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    const themeToggle = document.getElementById('themeToggle');
+    const sidebarThemeToggle = document.getElementById('sidebarThemeToggle');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-image');
+    const modalClose = document.querySelector('.modal-close');
+    const modalPrev = document.getElementById('modalPrev');
+    const modalNext = document.getElementById('modalNext');
+
+    // Global variables for modal navigation
+    let currentModalImages = [];
+    let currentModalIndex = 0;
+
+    // Theme Management
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const icon = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      themeToggle.innerHTML = icon;
+      if (sidebarThemeToggle) {
+        sidebarThemeToggle.innerHTML = icon;
+      }
+    }
+
+    // Set initial theme
+    setTheme(localStorage.getItem('theme') || 'light');
+
+    // Event Listeners
+    themeToggle.addEventListener('click', () => {
+      setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+
+    if (sidebarThemeToggle) {
+      sidebarThemeToggle.addEventListener('click', () => {
+        setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // Sidebar functionality
+    navToggle.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      sidebarOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      sidebarOverlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close sidebar when clicking on links
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    // Modal functionality
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    modalPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentModalIndex > 0) {
+        currentModalIndex--;
+        modalImg.src = currentModalImages[currentModalIndex];
+        updateModalNav();
+      }
+    });
+
+    modalNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentModalIndex < currentModalImages.length - 1) {
+        currentModalIndex++;
+        modalImg.src = currentModalImages[currentModalIndex];
+        updateModalNav();
+      }
+    });
+
+    function updateModalNav() {
+      modalPrev.style.display = currentModalIndex > 0 ? 'flex' : 'none';
+      modalNext.style.display = currentModalIndex < currentModalImages.length - 1 ? 'flex' : 'none';
+    }
+
+    // Close modal when clicking outside the image
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Load gallery items from Supabase
+    async function loadGalleryItems() {
+      try {
+        const { data, error } = await supabase
+          .from('gallery')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          throw error;
+        }
+
+        // Clear loading state
+        loadingElement.style.display = 'none';
+
+        // Render gallery items
+        data.forEach(item => {
+          // For items with multiple images, create a horizontal scroll post
+          if (item.multiple_images && item.multiple_images.length > 0) {
+            createMultiImagePost(item);
+          } else {
+            // For single images, create a standard post
+            createSingleImagePost(item);
+          }
+        });
+
+        // Initialize image navigation for multi-image posts
+        initImageNavigation();
+      } catch (error) {
+        console.error('Error loading gallery items:', error);
+        loadingElement.innerHTML = `
+          <p style="color: #d32f2f;">Error loading gallery. Please try again later.</p>
+        `;
+      }
+    }
+
+    // Create a post with multiple images (horizontal scroll)
+    function createMultiImagePost(item) {
+      const post = document.createElement('div');
+      post.className = 'gallery-post';
+
+      const postDate = new Date(item.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      // Get all image URLs (main image + additional images)
+      const allImageUrls = [item.image_url, ...item.multiple_images];
+
+      post.innerHTML = `
+        <div class="post-header">
+          <div class="post-title">${item.title || 'Traditional Attire'}</div>
+          <div class="post-date"></div>
+        </div>
+        <div class="post-images">
+          ${allImageUrls.map((imageUrl, index) => `
+            <div class="post-image">
+              <img src="${imageUrl}" alt="${item.title || 'Traditional Ethiopian clothing'}" />
+              <div class="image-nav prev" style="display: ${index === 0 ? 'none' : 'flex'}">
+                <i class="fas fa-chevron-left"></i>
+              </div>
+              <div class="image-nav next" style="display: ${index === allImageUrls.length - 1 ? 'none' : 'flex'}">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              <div class="image-counter">${index + 1} / ${allImageUrls.length}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="post-content">
+          ${item.description ? `<p class="post-description">${item.description}</p>` : ''}
+        </div>
+      `;
+
+      // Add click event to open modal with all images
+      const imagesContainer = post.querySelector('.post-images');
+      imagesContainer.addEventListener('click', () => {
+        openModal(allImageUrls, 0);
+      });
+
+      galleryContainer.appendChild(post);
+    }
+
+    // Create a post with a single image
+    function createSingleImagePost(item) {
+      const post = document.createElement('div');
+      post.className = 'gallery-post single-image-post';
+
+      const postDate = new Date(item.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      post.innerHTML = `
+        <div class="post-header">
+          <div class="post-title">${item.title || 'Traditional Attire'}</div>
+          <div class="post-date"></div>
+        </div>
+        <div class="post-image">
+          <img src="${item.image_url}" alt="${item.title || 'Traditional Ethiopian clothing'}" />
+        </div>
+        <div class="post-content">
+          ${item.description ? `<p class="post-description">${item.description}</p>` : ''}
+        </div>
+      `;
+
+      // Add click event to open modal
+      const image = post.querySelector('.post-image');
+      image.addEventListener('click', () => {
+        openModal([item.image_url], 0);
+      });
+
+      galleryContainer.appendChild(post);
+    }
+
+    // Open modal with full-size image
+    function openModal(images, startIndex) {
+      currentModalImages = images;
+      currentModalIndex = startIndex;
+      modalImg.src = images[startIndex];
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Hide prev/next buttons if only one image
+      if (images.length <= 1) {
+        modalPrev.style.display = 'none';
+        modalNext.style.display = 'none';
+      } else {
+        modalPrev.style.display = currentModalIndex === 0 ? 'none' : 'flex';
+        modalNext.style.display = currentModalIndex === images.length - 1 ? 'none' : 'flex';
+      }
+    }
+
+    // Initialize image navigation for multi-image posts
+    function initImageNavigation() {
+      const posts = document.querySelectorAll('.gallery-post:not(.single-image-post)');
+
+      posts.forEach(post => {
+        const imagesContainer = post.querySelector('.post-images');
+        const images = post.querySelectorAll('.post-image');
+        const prevButtons = post.querySelectorAll('.image-nav.prev');
+        const nextButtons = post.querySelectorAll('.image-nav.next');
+
+        let currentIndex = 0;
+
+        // Function to update counter
+        function updateCounter() {
+          counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // Function to scroll to a specific image
+        function goToImage(index) {
+          if (index >= 0 && index < images.length) {
+            imagesContainer.scrollTo({
+              left: images[index].offsetLeft,
+              behavior: 'smooth'
+            });
+            currentIndex = index;
+            updateCounter();
+
+            // Update navigation buttons visibility
+            prevButtons.forEach(btn => {
+              btn.style.display = index === 0 ? 'none' : 'flex';
+            });
+
+            nextButtons.forEach(btn => {
+              btn.style.display = index === images.length - 1 ? 'none' : 'flex';
+            });
+          }
+        }
+
+        // Add event listeners to navigation buttons
+        prevButtons.forEach((btn, index) => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToImage(currentIndex - 1);
+          });
+        });
+
+        nextButtons.forEach((btn, index) => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToImage(currentIndex + 1);
+          });
+        });
+
+        // Update scroll position when user manually scrolls
+        imagesContainer.addEventListener('scroll', () => {
+          const scrollPos = imagesContainer.scrollLeft;
+          const containerWidth = imagesContainer.clientWidth;
+
+          // Find which image is currently in view
+          let newIndex = 0;
+          let minDistance = Infinity;
+
+          images.forEach((image, index) => {
+            const distance = Math.abs(scrollPos - image.offsetLeft);
+            if (distance < minDistance) {
+              minDistance = distance;
+              newIndex = index;
+            }
+          });
+
+          if (newIndex !== currentIndex) {
+            currentIndex = newIndex;
+            updateCounter();
+
+            // Update navigation buttons visibility
+            prevButtons.forEach(btn => {
+              btn.style.display = currentIndex === 0 ? 'none' : 'flex';
+            });
+
+            nextButtons.forEach(btn => {
+              btn.style.display = currentIndex === images.length - 1 ? 'none' : 'flex';
+            });
+          }
+        });
+
+        // Initialize counter
+        updateCounter();
+      });
+    }
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       });
-    });
-    function openLightbox(img) {
-      document.getElementById("lightbox-img").src = img.src;
-      document.getElementById("lightbox").style.display = "flex";
     }
+    );
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGalleryItems();
+    });
   </script>
 </body>
 
 </html>
-
